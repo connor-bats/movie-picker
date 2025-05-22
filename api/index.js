@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
-const bucketListUrls = require('./Router/routes')
+const bucketListUrls = require('../Router/routes')
 require('dotenv').config()
 
 
@@ -31,3 +31,5 @@ app.on('ready', () => {
         console.log('Server is up and running')
     })
 })
+
+module.exports = app;
