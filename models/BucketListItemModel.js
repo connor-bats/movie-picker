@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const movieSchema = new mongoose.Schema({
+const bucketListItem = new mongoose.Schema({
     name : {
         type: String,
         requried: true,
@@ -21,4 +21,4 @@ const movieSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Movies', movieSchema)
+module.exports = mongoose.model('BucketList', bucketListItem)

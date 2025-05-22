@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const { getMovies, addMovies, randomMovie, addQuotes,getQuotes } = require('../controllers/movie_controller')
+const { getBucketList, addBucketListItem, randomBucketListItem, deleteBucketListItem, updateBucketListItem} = require('../controllers/bucketlist_controller')
 
-router.get('/getAllMovies', getMovies);
-router.post('/addMovie', addMovies);
-router.get('/randomMovie', randomMovie);
-router.post('/addQuote', addQuotes);
-router.post('/searchQuotes', getQuotes)
+router.get('/getAllItems', getBucketList);
+router.post('/addItem', addBucketListItem);
+router.get('/randomItem', randomBucketListItem);
+router.delete('/deleteItem', deleteBucketListItem);
+router.patch('/updateItem', updateBucketListItem);
 
 module.exports = router

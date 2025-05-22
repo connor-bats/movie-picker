@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
-const movieUrls = require('./Router/routes')
+const bucketListUrls = require('./Router/routes')
 require('dotenv').config()
 
 
@@ -22,7 +22,7 @@ app.use(express.json({
 }))
 app.use(cors())
 
-app.use('/movies', movieUrls)
+app.use('/bucketList', bucketListUrls)
 
 
 
