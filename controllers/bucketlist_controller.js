@@ -5,7 +5,8 @@ const bucketListModel = require('../models/BucketListItemModel')
 
 
 const getBucketList = (req, res) =>{
-    bucketListModel.find().sort({'added_on' : 1})
+    const urgency = req.body.urgency
+    bucketListModel.find({'urgency_feasibility' : urgency}).sort({'added_on' : 1})
         .then(data => {
             console.log(data)     
             res.status(200).json({
@@ -27,8 +28,8 @@ const getBucketList = (req, res) =>{
 const addBucketListItem = (req, res) => {
     const newItem = new bucketListModel({
         name : req.body.name,
-        added_by : req.body.username
-
+        added_by : req.body.username,
+        urgency_feasibility : req.body.current_feasibility
     })
 
     newItem.save()
@@ -53,11 +54,12 @@ const addBucketListItem = (req, res) => {
 const randomBucketListItem =async (req, res) => {
 
     try{
-    const qty = await bucketListModel.count();
+    const qty = await bucketListModel.countDocuments({'urgency_feasibility' : req.body.urgency});
+    const urgency  = req.body.urgency
 
     var skip_var = Math.floor(Math.random() * qty)
 
-    const data = await bucketListModel.findOne().skip(skip_var)
+    const data = await bucketListModel.findOne({'urgency_feasibility' : urgency}).skip(skip_var)
 
     console.log(data)
     return res.status(200).json({

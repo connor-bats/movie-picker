@@ -18,6 +18,10 @@ const bucketListItem = new mongoose.Schema({
     watched : {
         type : Boolean,
         default : false
+    },
+    urgency_feasibility : {
+        type: Boolean,
+        default : true
     }
 })
 
